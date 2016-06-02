@@ -33,4 +33,16 @@ describe Lita::Handlers::OnewheelRolz, lita_handler: true do
     send_command ('roll d6')
     expect(replies.last).to eq('You rolled a 1!')
   end
+
+  it 'rolls default' do
+    mock_fixture('d20_17')
+    send_command ('roll')
+    expect(replies.last).to eq('You rolled a 17!')
+  end
+
+  it 'rolls a 20!' do
+    mock_fixture('d20_20')
+    send_command ('roll d20')
+    expect(replies.last).to eq('You rolled a 20!  Critical hit!')
+  end
 end

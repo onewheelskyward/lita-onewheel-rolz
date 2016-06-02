@@ -32,7 +32,11 @@ module Lita
 
         say = "You rolled a #{result}!"
         if input.match(/d20/i) and result == 1.to_s
-          say += "  And you dropped your keyboard."
+          say += '  And you dropped your keyboard.'
+        end
+
+        if input.match(/d20/i) and result == 20.to_s
+          say += '  Critical hit!'
         end
 
         say
