@@ -3,8 +3,8 @@ require 'rest-client'
 module Lita
   module Handlers
     class OnewheelRolz < Handler
-      route /roll (.*)$/i, :roll, command: true
-      route /roll$/i, :roll_default, command: true
+      route /rol(l|e) (.*)$/i, :roll, command: true
+      route /rol(l|e)$/i, :roll_default, command: true
 
       def roll_default(response)
         response.reply make_roll('d20')
