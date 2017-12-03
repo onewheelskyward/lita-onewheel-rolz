@@ -19,7 +19,11 @@ module Lita
         result = 'wat'
         input = ''
 
-        roll_data = RestClient.get "https://rolz.org/api/?#{dice}"
+        url = "https://rolz.org/api/?#{dice}"
+        Lita.logger.debug "Hitting #{url}"
+        roll_data = RestClient.get url
+
+        Lita.logger.debug "#{roll_data}"
 
         roll_data.split(/\n/).each do |line|
           if line.match /result/
