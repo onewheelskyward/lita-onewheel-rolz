@@ -11,7 +11,7 @@ module Lita
       end
 
       def roll(response)
-        response.reply make_roll(response.matches[0][0])
+        response.reply make_roll(response.matches[0][1])
       end
 
       def make_roll(dice)
