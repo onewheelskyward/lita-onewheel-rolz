@@ -18,7 +18,7 @@ module Lita
         Lita.logger.debug "lita-onewheel-rolz: rolling #{dice}"
         result = 'wat'
         input = ''
-        dice.sub! /\s+/, ''
+        dice.gsub! /\s+/, ''
 
         url = "https://rolz.org/api/?#{dice}"
         Lita.logger.debug "Hitting #{url}"
