@@ -20,19 +20,23 @@ module Lita
         input = ''
         dice.gsub! /\s+/, ''
 
-        url = "https://rolz.org/api/?#{dice}"
-        Lita.logger.debug "Hitting #{url}"
-        roll_data = RestClient.get url
+        if dice.match /d/i
+          url = "https://rolz.org/api/?#{dice}"
+          Lita.logger.debug "Hitting #{url}"
+          roll_data = RestClient.get url
 
-        Lita.logger.debug "#{roll_data}"
+          Lita.logger.debug "#{roll_data}"
 
-        roll_data.split(/\n/).each do |line|
-          if line.match /result/
-            result = line[/(\d+)$/]
+          roll_data.split(/\n/).each do |line|
+            if line.match /result/
+              result = line[/(\d+)$/]
+            end
+            if line.match /input/
+              input = line[/(\w+)$/]
+            end
           end
-          if line.match /input/
-            input = line[/(\w+)$/]
-          end
+        else
+          result = rand(dice.to_i)
         end
 
         say = "You rolled a #{result}!"
