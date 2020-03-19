@@ -19,7 +19,7 @@ module Lita
         result = 'wat'
         input = ''
 
-        url = "https://rolz.org/api/?#{dice}"
+        url = "https://rolz.org/api/?#{dice.sub /\s+/, ''}"
         Lita.logger.debug "Hitting #{url}"
         roll_data = RestClient.get url
 
